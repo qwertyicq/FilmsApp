@@ -9,13 +9,17 @@
 /* Begin PBXBuildFile section */
 		884834E72882C688000270B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884834E62882C688000270B7 /* AppDelegate.swift */; };
 		884834E92882C688000270B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884834E82882C688000270B7 /* SceneDelegate.swift */; };
-		884834EB2882C688000270B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884834EA2882C688000270B7 /* ViewController.swift */; };
+		884834EB2882C688000270B7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884834EA2882C688000270B7 /* MainViewController.swift */; };
 		884834EE2882C688000270B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 884834EC2882C688000270B7 /* Main.storyboard */; };
 		884834F02882C689000270B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 884834EF2882C689000270B7 /* Assets.xcassets */; };
 		884834F32882C689000270B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 884834F12882C689000270B7 /* LaunchScreen.storyboard */; };
 		884834FE2882C689000270B7 /* FilmsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884834FD2882C689000270B7 /* FilmsAppTests.swift */; };
 		884835082882C689000270B7 /* FilmsAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884835072882C689000270B7 /* FilmsAppUITests.swift */; };
 		8848350A2882C689000270B7 /* FilmsAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884835092882C689000270B7 /* FilmsAppUITestsLaunchTests.swift */; };
+		884835172882D993000270B7 /* DetailFilmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884835162882D993000270B7 /* DetailFilmViewController.swift */; };
+		884835192882D9C6000270B7 /* FilmPicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884835182882D9C6000270B7 /* FilmPicsViewController.swift */; };
+		8848351B2882D9D6000270B7 /* FullPicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848351A2882D9D6000270B7 /* FullPicViewController.swift */; };
+		8848351D2882D9E5000270B7 /* FavoriteFilmsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848351C2882D9E5000270B7 /* FavoriteFilmsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +43,7 @@
 		884834E32882C688000270B7 /* FilmsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilmsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		884834E62882C688000270B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		884834E82882C688000270B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		884834EA2882C688000270B7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		884834EA2882C688000270B7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		884834ED2882C688000270B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		884834EF2882C689000270B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		884834F22882C689000270B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +53,10 @@
 		884835032882C689000270B7 /* FilmsAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilmsAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		884835072882C689000270B7 /* FilmsAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsAppUITests.swift; sourceTree = "<group>"; };
 		884835092882C689000270B7 /* FilmsAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		884835162882D993000270B7 /* DetailFilmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFilmViewController.swift; sourceTree = "<group>"; };
+		884835182882D9C6000270B7 /* FilmPicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmPicsViewController.swift; sourceTree = "<group>"; };
+		8848351A2882D9D6000270B7 /* FullPicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullPicViewController.swift; sourceTree = "<group>"; };
+		8848351C2882D9E5000270B7 /* FavoriteFilmsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFilmsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,8 +109,12 @@
 			children = (
 				884834E62882C688000270B7 /* AppDelegate.swift */,
 				884834E82882C688000270B7 /* SceneDelegate.swift */,
-				884834EA2882C688000270B7 /* ViewController.swift */,
+				884834EA2882C688000270B7 /* MainViewController.swift */,
 				884834EC2882C688000270B7 /* Main.storyboard */,
+				8848351A2882D9D6000270B7 /* FullPicViewController.swift */,
+				8848351C2882D9E5000270B7 /* FavoriteFilmsViewController.swift */,
+				884835182882D9C6000270B7 /* FilmPicsViewController.swift */,
+				884835162882D993000270B7 /* DetailFilmViewController.swift */,
 				884834EF2882C689000270B7 /* Assets.xcassets */,
 				884834F12882C689000270B7 /* LaunchScreen.storyboard */,
 				884834F42882C689000270B7 /* Info.plist */,
@@ -258,9 +270,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				884834EB2882C688000270B7 /* ViewController.swift in Sources */,
+				8848351D2882D9E5000270B7 /* FavoriteFilmsViewController.swift in Sources */,
+				8848351B2882D9D6000270B7 /* FullPicViewController.swift in Sources */,
+				884834EB2882C688000270B7 /* MainViewController.swift in Sources */,
 				884834E72882C688000270B7 /* AppDelegate.swift in Sources */,
 				884834E92882C688000270B7 /* SceneDelegate.swift in Sources */,
+				884835192882D9C6000270B7 /* FilmPicsViewController.swift in Sources */,
+				884835172882D993000270B7 /* DetailFilmViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
