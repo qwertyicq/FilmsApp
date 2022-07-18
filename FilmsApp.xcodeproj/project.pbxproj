@@ -20,6 +20,8 @@
 		884835192882D9C6000270B7 /* FilmPicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884835182882D9C6000270B7 /* FilmPicsViewController.swift */; };
 		8848351B2882D9D6000270B7 /* FullPicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848351A2882D9D6000270B7 /* FullPicViewController.swift */; };
 		8848351D2882D9E5000270B7 /* FavoriteFilmsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848351C2882D9E5000270B7 /* FavoriteFilmsViewController.swift */; };
+		8848351F2885A3AE000270B7 /* JSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848351E2885A3AE000270B7 /* JSONModel.swift */; };
+		884835212885AA69000270B7 /* FilmCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884835202885AA69000270B7 /* FilmCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		884835182882D9C6000270B7 /* FilmPicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmPicsViewController.swift; sourceTree = "<group>"; };
 		8848351A2882D9D6000270B7 /* FullPicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullPicViewController.swift; sourceTree = "<group>"; };
 		8848351C2882D9E5000270B7 /* FavoriteFilmsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFilmsViewController.swift; sourceTree = "<group>"; };
+		8848351E2885A3AE000270B7 /* JSONModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONModel.swift; sourceTree = "<group>"; };
+		884835202885AA69000270B7 /* FilmCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,8 @@
 				884834E82882C688000270B7 /* SceneDelegate.swift */,
 				884834EA2882C688000270B7 /* MainViewController.swift */,
 				884834EC2882C688000270B7 /* Main.storyboard */,
+				884835202885AA69000270B7 /* FilmCollectionViewCell.swift */,
+				8848351E2885A3AE000270B7 /* JSONModel.swift */,
 				8848351A2882D9D6000270B7 /* FullPicViewController.swift */,
 				8848351C2882D9E5000270B7 /* FavoriteFilmsViewController.swift */,
 				884835182882D9C6000270B7 /* FilmPicsViewController.swift */,
@@ -275,6 +281,8 @@
 				884834EB2882C688000270B7 /* MainViewController.swift in Sources */,
 				884834E72882C688000270B7 /* AppDelegate.swift in Sources */,
 				884834E92882C688000270B7 /* SceneDelegate.swift in Sources */,
+				8848351F2885A3AE000270B7 /* JSONModel.swift in Sources */,
+				884835212885AA69000270B7 /* FilmCollectionViewCell.swift in Sources */,
 				884835192882D9C6000270B7 /* FilmPicsViewController.swift in Sources */,
 				884835172882D993000270B7 /* DetailFilmViewController.swift in Sources */,
 			);
