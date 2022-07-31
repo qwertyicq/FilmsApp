@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FilmCell" id="RoW-NK-yMN" customClass="FilmCollectionViewCell" customModule="FilmsApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="180" height="358"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gHj-qg-ICJ">
+                <rect key="frame" x="0.0" y="0.0" width="180" height="358"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aix-cr-DW2">
+                        <rect key="frame" x="5" y="5" width="165" height="268.5"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название фильма" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zM6-1e-4pM">
+                        <rect key="frame" x="8" y="277" width="164" height="48"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рейтинг" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1W6-mz-Hol">
+                        <rect key="frame" x="129" y="315.5" width="43" height="43"/>
+                        <color key="backgroundColor" red="0.2198675705" green="0.60292205239999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" systemColor="systemYellowColor"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Год выпуска" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YTm-OE-MmS">
+                        <rect key="frame" x="8" y="328" width="126" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="YTm-OE-MmS" firstAttribute="width" secondItem="gHj-qg-ICJ" secondAttribute="width" multiplier="0.7" id="2aD-4n-Neu"/>
+                    <constraint firstItem="aix-cr-DW2" firstAttribute="top" secondItem="gHj-qg-ICJ" secondAttribute="top" constant="5" id="BGw-1E-KOJ"/>
+                    <constraint firstItem="aix-cr-DW2" firstAttribute="trailing" secondItem="gHj-qg-ICJ" secondAttribute="trailing" constant="-10" id="Hua-rB-1NM"/>
+                    <constraint firstItem="zM6-1e-4pM" firstAttribute="leading" secondItem="gHj-qg-ICJ" secondAttribute="leading" constant="8" id="K05-pc-Fy6"/>
+                    <constraint firstItem="aix-cr-DW2" firstAttribute="height" secondItem="gHj-qg-ICJ" secondAttribute="height" multiplier="0.75" id="R8n-0n-bjn"/>
+                    <constraint firstAttribute="trailing" secondItem="zM6-1e-4pM" secondAttribute="trailing" constant="8" id="Xep-FV-L70"/>
+                    <constraint firstItem="YTm-OE-MmS" firstAttribute="top" secondItem="zM6-1e-4pM" secondAttribute="bottom" constant="3" id="Y9Z-aV-V3g"/>
+                    <constraint firstAttribute="trailing" secondItem="1W6-mz-Hol" secondAttribute="trailing" constant="8" id="ZzL-MA-GqZ"/>
+                    <constraint firstItem="1W6-mz-Hol" firstAttribute="centerY" secondItem="YTm-OE-MmS" secondAttribute="centerY" id="fJS-fJ-KUK"/>
+                    <constraint firstItem="YTm-OE-MmS" firstAttribute="leading" secondItem="gHj-qg-ICJ" secondAttribute="leading" constant="8" id="gBY-cr-gj2"/>
+                    <constraint firstItem="zM6-1e-4pM" firstAttribute="top" secondItem="aix-cr-DW2" secondAttribute="bottom" constant="3.5" id="j2c-zO-S24"/>
+                    <constraint firstItem="aix-cr-DW2" firstAttribute="leading" secondItem="gHj-qg-ICJ" secondAttribute="leading" constant="5" id="mMT-s0-0Mc"/>
+                    <constraint firstItem="1W6-mz-Hol" firstAttribute="leading" secondItem="YTm-OE-MmS" secondAttribute="trailing" constant="-5" id="o4c-tl-CN7"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <color key="backgroundColor" red="0.21986757045546301" green="0.60292205237086849" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color key="tintColor" systemColor="labelColor"/>
+            <size key="customSize" width="188" height="346"/>
+            <connections>
+                <outlet property="filmTitleLabel" destination="zM6-1e-4pM" id="EtD-1s-qUH"/>
+                <outlet property="posterPreviewImageView" destination="aix-cr-DW2" id="Kmk-G6-oXc"/>
+                <outlet property="rateLabel" destination="1W6-mz-Hol" id="dP2-A9-0en"/>
+                <outlet property="releaseYearLabel" destination="YTm-OE-MmS" id="XHp-ju-yKF"/>
+            </connections>
+            <point key="canvasLocation" x="-136.23188405797103" y="0.0"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

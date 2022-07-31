@@ -22,6 +22,8 @@
 		8848351D2882D9E5000270B7 /* FavoriteFilmsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848351C2882D9E5000270B7 /* FavoriteFilmsViewController.swift */; };
 		8848351F2885A3AE000270B7 /* JSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848351E2885A3AE000270B7 /* JSONModel.swift */; };
 		884835212885AA69000270B7 /* FilmCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884835202885AA69000270B7 /* FilmCollectionViewCell.swift */; };
+		88DC65522891C83D00E83727 /* FilmCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88DC65512891C83D00E83727 /* FilmCollectionViewCell.xib */; };
+		88DC65542895813B00E83727 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 88DC65532895813B00E83727 /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		8848351C2882D9E5000270B7 /* FavoriteFilmsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFilmsViewController.swift; sourceTree = "<group>"; };
 		8848351E2885A3AE000270B7 /* JSONModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONModel.swift; sourceTree = "<group>"; };
 		884835202885AA69000270B7 /* FilmCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCollectionViewCell.swift; sourceTree = "<group>"; };
+		88DC65512891C83D00E83727 /* FilmCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmCollectionViewCell.xib; sourceTree = "<group>"; };
+		88DC65532895813B00E83727 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,7 @@
 		884834DA2882C688000270B7 = {
 			isa = PBXGroup;
 			children = (
+				88DC65532895813B00E83727 /* .swiftlint.yml */,
 				884834E52882C688000270B7 /* FilmsApp */,
 				884834FC2882C689000270B7 /* FilmsAppTests */,
 				884835062882C689000270B7 /* FilmsAppUITests */,
@@ -115,6 +120,7 @@
 				884834E82882C688000270B7 /* SceneDelegate.swift */,
 				884834EA2882C688000270B7 /* MainViewController.swift */,
 				884834EC2882C688000270B7 /* Main.storyboard */,
+				88DC65512891C83D00E83727 /* FilmCollectionViewCell.xib */,
 				884835202885AA69000270B7 /* FilmCollectionViewCell.swift */,
 				8848351E2885A3AE000270B7 /* JSONModel.swift */,
 				8848351A2882D9D6000270B7 /* FullPicViewController.swift */,
@@ -155,6 +161,7 @@
 				884834DF2882C688000270B7 /* Sources */,
 				884834E02882C688000270B7 /* Frameworks */,
 				884834E12882C688000270B7 /* Resources */,
+				884A9FC2288FB0B10047CAA9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -249,8 +256,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88DC65542895813B00E83727 /* .swiftlint.yml in Resources */,
 				884834F32882C689000270B7 /* LaunchScreen.storyboard in Resources */,
 				884834F02882C689000270B7 /* Assets.xcassets in Resources */,
+				88DC65522891C83D00E83727 /* FilmCollectionViewCell.xib in Resources */,
 				884834EE2882C688000270B7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +279,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		884A9FC2288FB0B10047CAA9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\n    #echo \"skip\"\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n    exit 1\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		884834DF2882C688000270B7 /* Sources */ = {

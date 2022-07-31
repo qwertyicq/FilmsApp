@@ -8,7 +8,7 @@
 import UIKit
 
 class FilmCollectionViewCell: UICollectionViewCell {
-    
+
     @IBOutlet weak var posterPreviewImageView: UIImageView!
     @IBOutlet weak var filmTitleLabel: UILabel!
     @IBOutlet weak var releaseYearLabel: UILabel!

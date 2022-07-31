@@ -8,7 +8,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    
+
     var testArray: [TestModel] = [
     TestModel(testPic: "image1", testTitle: "Фильм 1", testYear: "2009", testRating: "4.6"),
     TestModel(testPic: "image2", testTitle: "Фильм 2", testYear: "2009", testRating: "4.6"),
@@ -29,17 +29,21 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var filmSearchBar: UISearchBar!
     @IBOutlet weak var mainCollectionView: UICollectionView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
-        
-        filmSearchBar.delegate = self
-    }
 
+        filmSearchBar.delegate = self
+
+        let xibCell = UINib(nibName: "FilmCollectionViewCell", bundle: nil)
+        mainCollectionView.register(xibCell, forCellWithReuseIdentifier: "FilmCell")
+
+        mainCollectionView.reloadData()
+    }
 
 }
 
@@ -47,12 +51,17 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return testArray.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: "FilmCell", for: indexPath) as? FilmCollectionViewCell else {
             return UICollectionViewCell()
         }
-        
+
+        NSLayoutConstraint.activate([
+            cell.widthAnchor.constraint(equalToConstant: 180),
+            cell.heightAnchor.constraint(equalToConstant: 358)
+        ])
+
         cell.posterPreviewImageView.image = UIImage(named: testArray[indexPath.row].testPic ?? "image1")
         cell.filmTitleLabel.text = testArray[indexPath.row].testTitle
         cell.releaseYearLabel.text = testArray[indexPath.row].testYear
@@ -62,5 +71,5 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 extension MainViewController: UISearchBarDelegate {
-    
+
 }
