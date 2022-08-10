@@ -16,14 +16,20 @@ class DetailFilmViewController: UIViewController {
     @IBOutlet weak var galleryCollection: UICollectionView!
     @IBOutlet weak var descriptionTextView: UITextView!
 
+    var destinationIndex: Int = Int()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        posterImageView.image = UIImage(named: testArray[destinationIndex].testPic ?? "image1")
+        filmTitleLabel.text = testArray[destinationIndex].testTitle
+        releaseYearLabel.text = testArray[destinationIndex].testYear
+        rateLabel.text = testArray[destinationIndex].testRating
     }
 
     @IBAction func tapGestureAction(_ sender: UITapGestureRecognizer) {
     }
+
     /*
     // MARK: - Navigation
 
