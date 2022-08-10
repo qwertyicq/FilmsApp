@@ -25,6 +25,7 @@
 		88DC65522891C83D00E83727 /* FilmCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88DC65512891C83D00E83727 /* FilmCollectionViewCell.xib */; };
 		88DC65542895813B00E83727 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 88DC65532895813B00E83727 /* .swiftlint.yml */; };
 		88DC655628A3831E00E83727 /* PosterFullViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DC655528A3831E00E83727 /* PosterFullViewController.swift */; };
+		88DC655828A3F99C00E83727 /* RoundingTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DC655728A3F99C00E83727 /* RoundingTransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		88DC65512891C83D00E83727 /* FilmCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmCollectionViewCell.xib; sourceTree = "<group>"; };
 		88DC65532895813B00E83727 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		88DC655528A3831E00E83727 /* PosterFullViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterFullViewController.swift; sourceTree = "<group>"; };
+		88DC655728A3F99C00E83727 /* RoundingTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundingTransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				884834EA2882C688000270B7 /* MainViewController.swift */,
 				884834EC2882C688000270B7 /* Main.storyboard */,
 				88DC655528A3831E00E83727 /* PosterFullViewController.swift */,
+				88DC655728A3F99C00E83727 /* RoundingTransition.swift */,
 				88DC65512891C83D00E83727 /* FilmCollectionViewCell.xib */,
 				884835202885AA69000270B7 /* FilmCollectionViewCell.swift */,
 				8848351E2885A3AE000270B7 /* JSONModel.swift */,
@@ -308,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88DC655828A3F99C00E83727 /* RoundingTransition.swift in Sources */,
 				8848351D2882D9E5000270B7 /* FavoriteFilmsViewController.swift in Sources */,
 				8848351B2882D9D6000270B7 /* FullPicViewController.swift in Sources */,
 				884834EB2882C688000270B7 /* MainViewController.swift in Sources */,
