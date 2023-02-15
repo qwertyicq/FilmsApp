@@ -19,13 +19,26 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
     var destinationIndex: Int = Int()
     var transition: RoundingTransition = RoundingTransition()
 
+    var cameFromFav: Bool = Bool()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        posterImageView.image = UIImage(named: testArray[destinationIndex].testPic ?? "image1")
-        filmTitleLabel.text = testArray[destinationIndex].testTitle
-        releaseYearLabel.text = testArray[destinationIndex].testYear
-        rateLabel.text = testArray[destinationIndex].testRating
+        guard let index = Model.shared.ratingSort().firstIndex(where: { $0.id == destinationIndex}) else { return }
+        self.destinationIndex = index
+        
+        if cameFromFav {
+            posterImageView.image = UIImage(named: Model.shared.sortedTestArray[destinationIndex].testPic ?? "image1")
+            filmTitleLabel.text = Model.shared.sortedTestArray[destinationIndex].testTitle
+            releaseYearLabel.text = String(Model.shared.sortedTestArray[destinationIndex].testYear ?? 0)
+            rateLabel.text = String(Model.shared.sortedTestArray[destinationIndex].testRating ?? 0)
+        } else {
+            posterImageView.image = UIImage(named: Model.shared.ratingSort()[destinationIndex].testPic ?? "image1")
+                //.sortedTestArray[destinationIndex].testPic ?? "image1")
+            filmTitleLabel.text = Model.shared.ratingSort()[destinationIndex].testTitle
+            releaseYearLabel.text = String(Model.shared.ratingSort()[destinationIndex].testYear ?? 0)
+            rateLabel.text = String(Model.shared.ratingSort()[destinationIndex].testRating ?? 0)
+        }
     }
 
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -57,13 +70,13 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
     }
 
     /*
-    // MARK: - Navigation
+     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
 
 }

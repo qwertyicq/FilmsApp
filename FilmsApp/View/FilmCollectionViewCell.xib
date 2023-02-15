@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aix-cr-DW2">
-                        <rect key="frame" x="5" y="5" width="165" height="268.5"/>
+                        <rect key="frame" x="5" y="5" width="170" height="268.5"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название фильма" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zM6-1e-4pM">
                         <rect key="frame" x="8" y="277" width="164" height="48"/>
@@ -39,12 +40,29 @@
                         <color key="textColor" red="0.47843137250000001" green="0.75686274509999996" blue="0.25882352939999997" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDw-js-fws">
+                        <rect key="frame" x="125" y="10" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="hSE-7M-54Z"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="rlr-Zl-0qq"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain">
+                            <imageReference key="image" image="heart" catalog="system" symbolScale="large"/>
+                            <attributedString key="attributedTitle"/>
+                            <color key="baseForegroundColor" red="1" green="0.80392156859999997" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </buttonConfiguration>
+                        <connections>
+                            <action selector="likeBtnTouchUpInside:" destination="RoW-NK-yMN" eventType="touchUpInside" id="0hJ-uq-byQ"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" red="0.0" green="0.16470588235294117" blue="0.36078431372549019" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="YTm-OE-MmS" firstAttribute="width" secondItem="gHj-qg-ICJ" secondAttribute="width" multiplier="0.7" id="2aD-4n-Neu"/>
+                    <constraint firstItem="FDw-js-fws" firstAttribute="top" secondItem="aix-cr-DW2" secondAttribute="top" constant="5" id="2pi-cK-81M"/>
+                    <constraint firstItem="FDw-js-fws" firstAttribute="trailing" secondItem="aix-cr-DW2" secondAttribute="trailing" id="3au-zG-giy"/>
                     <constraint firstItem="aix-cr-DW2" firstAttribute="top" secondItem="gHj-qg-ICJ" secondAttribute="top" constant="5" id="BGw-1E-KOJ"/>
-                    <constraint firstItem="aix-cr-DW2" firstAttribute="trailing" secondItem="gHj-qg-ICJ" secondAttribute="trailing" constant="-10" id="Hua-rB-1NM"/>
                     <constraint firstItem="zM6-1e-4pM" firstAttribute="leading" secondItem="gHj-qg-ICJ" secondAttribute="leading" constant="8" id="K05-pc-Fy6"/>
                     <constraint firstItem="aix-cr-DW2" firstAttribute="height" secondItem="gHj-qg-ICJ" secondAttribute="height" multiplier="0.75" id="R8n-0n-bjn"/>
                     <constraint firstAttribute="trailing" secondItem="zM6-1e-4pM" secondAttribute="trailing" constant="8" id="Xep-FV-L70"/>
@@ -53,6 +71,7 @@
                     <constraint firstItem="1W6-mz-Hol" firstAttribute="centerY" secondItem="YTm-OE-MmS" secondAttribute="centerY" id="fJS-fJ-KUK"/>
                     <constraint firstItem="YTm-OE-MmS" firstAttribute="leading" secondItem="gHj-qg-ICJ" secondAttribute="leading" constant="8" id="gBY-cr-gj2"/>
                     <constraint firstItem="zM6-1e-4pM" firstAttribute="top" secondItem="aix-cr-DW2" secondAttribute="bottom" constant="3.5" id="j2c-zO-S24"/>
+                    <constraint firstAttribute="trailing" secondItem="aix-cr-DW2" secondAttribute="trailing" constant="5" id="lhp-lr-cfh"/>
                     <constraint firstItem="aix-cr-DW2" firstAttribute="leading" secondItem="gHj-qg-ICJ" secondAttribute="leading" constant="5" id="mMT-s0-0Mc"/>
                     <constraint firstItem="1W6-mz-Hol" firstAttribute="leading" secondItem="YTm-OE-MmS" secondAttribute="trailing" constant="-5" id="o4c-tl-CN7"/>
                 </constraints>
@@ -62,6 +81,7 @@
             <size key="customSize" width="188" height="346"/>
             <connections>
                 <outlet property="filmTitleLabel" destination="zM6-1e-4pM" id="EtD-1s-qUH"/>
+                <outlet property="likeBtn" destination="FDw-js-fws" id="Jcj-1B-C9g"/>
                 <outlet property="posterPreviewImageView" destination="aix-cr-DW2" id="Kmk-G6-oXc"/>
                 <outlet property="rateLabel" destination="1W6-mz-Hol" id="dP2-A9-0en"/>
                 <outlet property="releaseYearLabel" destination="YTm-OE-MmS" id="XHp-ju-yKF"/>
@@ -70,6 +90,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
