@@ -9,20 +9,42 @@ import UIKit
 
 class FilmPicsViewController: UIViewController {
 
+    @IBOutlet weak var allGalleryCollection: UICollectionView!
+    @IBOutlet weak var counterLabel: UILabel!
+    var picturesCounter: Int = 9
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let xibCell = UINib(nibName: "GalleryCell", bundle: nil)
+        allGalleryCollection.register(xibCell, forCellWithReuseIdentifier: "GalleryCell")
+
+        allGalleryCollection.dataSource = self
+        allGalleryCollection.delegate = self
+    }
+}
+
+extension FilmPicsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return picturesCounter
     }
 
-    /*
-    // MARK: - Navigation
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = allGalleryCollection.dequeueReusableCell(withReuseIdentifier: "GalleryCell", for: indexPath) as? GalleryCell else {
+            return UICollectionViewCell()
+        }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        cell.layer.cornerRadius = 20
+        cell.additionaPosterImage.image = UIImage(named: "image1")
+
+        return cell
     }
-    */
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let destViewController = storyboard?.instantiateViewController(withIdentifier: "FullPicViewControllerS") as? FullPicViewController else { return }
+
+        destViewController.picturesCounter = self.picturesCounter
+
+        navigationController?.pushViewController(destViewController, animated: true)
+    }
 }

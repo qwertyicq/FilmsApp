@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Item {
+/*class Item {
     var id: Int?
     var testPic: String?
     var testTitle: String?
@@ -28,12 +29,20 @@ class Item {
         self.testRating = testRating
         self.isLiked = isLiked
     }
-}
+}*/
 
 class Model {
     public static let shared = Model()
+
+    let realm = try? Realm()
+
+    var filmObjects: Results<FilmObject>? {
+        return realm?.objects(FilmObject.self)
+    }
+    var arrayHelper: Results<FilmObject>?
+    var favouriteFilmObjects: Results<FilmObject>?
     
-    var testArray: [Item] = [
+    /*var testArray: [Item] = [
         Item(id: 0, testPic: "image1", testTitle: "Фильм 1", testYear: 2009, testRating: 4.6, isLiked: false),
         Item(id: 1, testPic: "image2", testTitle: "Фильм 2", testYear: 2009, testRating: 1.6, isLiked: true),
         Item(id: 2, testPic: "image3", testTitle: "Фильм 3", testYear: 2009, testRating: 3.6, isLiked: false),
@@ -49,38 +58,70 @@ class Model {
         Item(id: 13, testPic: "image13", testTitle: "Фильм 13", testYear: 2009, testRating: 4.6, isLiked: false),
         Item(id: 14, testPic: "image14", testTitle: "Фильм 14", testYear: 2009, testRating: 4.6, isLiked: false),
         Item(id: 15, testPic: "image15", testTitle: "Фильм 15", testYear: 2009, testRating: 4.6, isLiked: false)
-    ]
+    ]*/
 
     var sortAcending: Bool = false
-    var sortedTestArray: [Item] = []
-    var favoriteArray: [Item] = []
+    //var sortedTestArray: [Item] = []
+    //var favoriteArray: [Item] = []
+    //var newTestArray: [Item] = []
 
-    func ratingSort() -> [Item] {
+    /*func ratingSort() -> [Item] {
         self.testArray.sort {
             sortAcending ? $0.testRating ?? 0 < $1.testRating ?? 0 : $0.testRating ?? 0 > $1.testRating ?? 0
         }
 
         sortedTestArray = testArray
         return sortedTestArray
+    }*/
+
+    func ratingSort() {
+        arrayHelper = filmObjects?.sorted(byKeyPath: "filmRating", ascending: sortAcending)
     }
 
-    func showLikedItems() {
-        
-    }
+    /*func search(searchTextValue: String) {
+        newTestArray = []
 
-    func addToFavorite(index: Int) {
-        /*if (favoriteArray.first(where: { out in
-            out.id == index
-        }) != nil) {
-            return
+        if searchTextValue == "" {
+            newTestArray = ratingSort()
+        } else {
+            for item in ratingSort() {
+                guard let unwrItem = item.testTitle else { return }
+
+                if unwrItem.contains(searchTextValue) {
+                    newTestArray.append(item)
+                }
+            }
         }
 
-        ratingSort().first(where: { $0.id == index })?.isLiked = true
+        newTestArray = testArray.filter({
+            $0.testTitle?.range(of: searchTextValue, options: .caseInsensitive) != nil
+        })
+    }*/
 
-        if let item: Item = sortedTestArray.first(where: { $0.id == index }) {
-            favoriteArray.append(item)
-        }*/
+    func search(searchTextValue: String) {
+        let predicate = NSPredicate(format: "filmTitle CONTAINS [c]$@", searchTextValue)
+        arrayHelper = filmObjects?.filter(predicate)
+    }
 
+    func updateLike(index: Int) {
+        if let film = filmObjects?[index] {
+            do {
+                try realm?.write({
+                    film.isLiked = !film.isLiked
+                })
+            } catch {
+                print("Ошибка сохранения данных, \(error)")
+            }
+        }
+    }
+
+    func fillFavouriteFilms() {
+        let likeFilter = NSPredicate(format: "isLiked = true")
+
+        favouriteFilmObjects = filmObjects?.filter(likeFilter)
+    }
+
+    /*func addToFavorite(index: Int) {
         ratingSort()[index].isLiked = true
 
         favoriteArray.append(ratingSort()[index])
@@ -100,5 +141,11 @@ class Model {
         for item in sortedTestArray where item.isLiked! {
             favoriteArray.append(item)
         }
-    }
+
+        for item in filmObject! .where({ itm in
+            itm.isLiked == true
+        }) {
+            favoriteArray.append(Item(id: item.id, testPic: item.filmPic, testTitle: item.filmTitle, testYear: item.filmYear, testRating: item.filmRating, isLiked: item.isLiked))
+        }
+    }*/
 }

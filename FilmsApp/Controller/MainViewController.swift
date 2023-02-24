@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MainViewController: UIViewController {
 
@@ -15,16 +16,13 @@ class MainViewController: UIViewController {
 
     var searchController = UISearchController()
 
-    let model: Model = Model()
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
 
-        Model.shared.sortedTestArray = Model.shared.testArray
+        //print(Model.shared.realm?.configuration.fileURL)
 
         searchController.searchBar.delegate = self
-        searchController.searchBar.placeholder = "Find Film"
+        searchController.searchBar.placeholder = "Find Your Film"
 
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -37,9 +35,9 @@ class MainViewController: UIViewController {
 
         Model.shared.ratingSort()
 
-        Model.shared.refillFavoriteFilms()
-
-        mainCollectionView.reloadData()
+        DispatchQueue.main.async {
+            self.mainCollectionView.reloadData()
+        }
     }
 
     @IBAction func sortBtnTouchUpInside(_ sender: Any) {
@@ -49,13 +47,13 @@ class MainViewController: UIViewController {
 
         Model.shared.ratingSort()
 
-        mainCollectionView.reloadData()
+        DispatchQueue.main.async {
+            self.mainCollectionView.reloadData()
+        }
     }
 
     @IBAction func favFilmBtnTouchUpInside(_ sender: Any) {
         guard let destViewController = storyboard?.instantiateViewController(withIdentifier: "FavoriteFilmsViewControllerS") as? FavoriteFilmsViewController else { return }
-
-        //Model.shared.refillFavoriteFilms()
 
         navigationController?.pushViewController(destViewController, animated: true)
     }
@@ -64,11 +62,12 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Model.shared.sortedTestArray.count
+        return Model.shared.arrayHelper?.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: "FilmCell", for: indexPath) as? FilmCollectionViewCell else {
+        guard let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: "FilmCell", for: indexPath) as? FilmCollectionViewCell,
+              let item = Model.shared.arrayHelper?[indexPath.row] else {
             return UICollectionViewCell()
         }
 
@@ -76,10 +75,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.widthAnchor.constraint(equalToConstant: 180),
             cell.heightAnchor.constraint(equalToConstant: 358)
         ])
-
         cell.layer.cornerRadius = 20
-
-        cell.data = Model.shared.sortedTestArray[indexPath.item]
+        cell.data = item
 
         return cell
     }
@@ -87,12 +84,38 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let destViewController = storyboard?.instantiateViewController(withIdentifier: "DetailFilmViewControllerS") as? DetailFilmViewController else { return }
 
-        destViewController.destinationIndex = Model.shared.ratingSort()[indexPath.item].id ?? 0
-        //    .sortedTestArray[indexPath.row].id ?? 0
+        destViewController.destinationIndex = Model.shared.arrayHelper?[indexPath.row].id ?? 0
+
         navigationController?.pushViewController(destViewController, animated: true)
     }
 }
 
 extension MainViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        Model.shared.arrayHelper = Model.shared.filmObjects
+        Model.shared.search(searchTextValue: searchText)
 
+        if searchBar.text?.count == 0 {
+            Model.shared.arrayHelper = Model.shared.filmObjects
+            Model.shared.ratingSort()
+        }
+
+        DispatchQueue.main.async {
+            self.mainCollectionView.reloadData()
+        }
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        Model.shared.arrayHelper = Model.shared.filmObjects
+
+        if searchBar.text?.count == 0 {
+            Model.shared.arrayHelper = Model.shared.filmObjects
+            Model.shared.ratingSort()
+        }
+        
+        DispatchQueue.main.async {
+            Model.shared.ratingSort()
+            self.mainCollectionView.reloadData()
+        }
+    }
 }

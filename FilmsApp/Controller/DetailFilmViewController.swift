@@ -14,30 +14,28 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
     @IBOutlet weak var releaseYearLabel: UILabel!
     @IBOutlet weak var rateLabel: UILabel!
     @IBOutlet weak var galleryCollection: UICollectionView!
+    @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var descriptionTextView: UITextView!
-
+    @IBOutlet weak var galleryButton: UIButton!
     var destinationIndex: Int = Int()
     var transition: RoundingTransition = RoundingTransition()
-
-    var cameFromFav: Bool = Bool()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let index = Model.shared.ratingSort().firstIndex(where: { $0.id == destinationIndex}) else { return }
-        self.destinationIndex = index
-        
-        if cameFromFav {
-            posterImageView.image = UIImage(named: Model.shared.sortedTestArray[destinationIndex].testPic ?? "image1")
-            filmTitleLabel.text = Model.shared.sortedTestArray[destinationIndex].testTitle
-            releaseYearLabel.text = String(Model.shared.sortedTestArray[destinationIndex].testYear ?? 0)
-            rateLabel.text = String(Model.shared.sortedTestArray[destinationIndex].testRating ?? 0)
-        } else {
-            posterImageView.image = UIImage(named: Model.shared.ratingSort()[destinationIndex].testPic ?? "image1")
-                //.sortedTestArray[destinationIndex].testPic ?? "image1")
-            filmTitleLabel.text = Model.shared.ratingSort()[destinationIndex].testTitle
-            releaseYearLabel.text = String(Model.shared.ratingSort()[destinationIndex].testYear ?? 0)
-            rateLabel.text = String(Model.shared.ratingSort()[destinationIndex].testRating ?? 0)
+        let xibCell = UINib(nibName: "GalleryCell", bundle: nil)
+        galleryCollection.register(xibCell, forCellWithReuseIdentifier: "GalleryCell")
+
+        galleryCollection.dataSource = self
+        galleryCollection.delegate = self
+
+        DispatchQueue.main.async {
+            self.posterImageView.image = UIImage(named: Model.shared.filmObjects?[self.destinationIndex].filmPic ?? "image1")
+            self.filmTitleLabel.text = Model.shared.filmObjects?[self.destinationIndex].filmTitle
+            self.releaseYearLabel.text = String(Model.shared.filmObjects?[self.destinationIndex].filmYear ?? 0)
+            self.rateLabel.text = String(Model.shared.filmObjects?[self.destinationIndex].filmRating ?? 0)
+            self.likeButton.setTitle("", for: .normal)
+            self.likeButton.setImage(Model.shared.filmObjects?[self.destinationIndex].isLiked ?? false ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart"), for: .normal)
         }
     }
 
@@ -69,14 +67,45 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
         fullPicPosterVC.modalPresentationStyle = .custom
     }
 
-    /*
-     // MARK: - Navigation
+    @IBAction func likeBtnTouchUpInside(_ sender: Any) {
+        Model.shared.updateLike(index: self.destinationIndex)
+        guard let films = Model.shared.filmObjects else { return }
+        likeButton.setImage(films[self.destinationIndex].isLiked ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart"), for: .normal)
+    }
 
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    @IBAction func galleryBtnTouchUpInside(_ sender: Any) {
+        guard let destViewController = storyboard?.instantiateViewController(withIdentifier: "FilmPicsViewControllerS") as? FilmPicsViewController else { return }
 
+        navigationController?.pushViewController(destViewController, animated: true)
+    }
+}
+
+extension DetailFilmViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = galleryCollection.dequeueReusableCell(withReuseIdentifier: "GalleryCell", for: indexPath) as? GalleryCell else {
+            return UICollectionViewCell()
+        }
+
+        NSLayoutConstraint.activate([
+            cell.widthAnchor.constraint(equalToConstant: 128),
+            cell.heightAnchor.constraint(equalToConstant: 128)
+        ])
+
+        cell.layer.cornerRadius = 20
+        cell.additionaPosterImage.image = UIImage(named: "image1")
+
+        return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let destViewController = storyboard?.instantiateViewController(withIdentifier: "FullPicViewControllerS") as? FullPicViewController else { return }
+
+        destViewController.picturesCounter = 9
+
+        navigationController?.pushViewController(destViewController, animated: true)
+    }
 }

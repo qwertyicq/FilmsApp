@@ -11,7 +11,9 @@ class FavoriteFilmsViewController: UIViewController {
 
     var isListEdit: Bool = Bool(){
         didSet {
-            self.favoriteFilmsCollection.reloadData()
+            DispatchQueue.main.async {
+                self.favoriteFilmsCollection.reloadData()
+            }
         }
     }
 
@@ -27,25 +29,37 @@ class FavoriteFilmsViewController: UIViewController {
 
         favoriteFilmsCollection.register(xibFavCell, forCellWithReuseIdentifier: "FilmCell")
 
-        favoriteFilmsCollection.reloadData()
+        Model.shared.fillFavouriteFilms()
+        DispatchQueue.main.async {
+            self.favoriteFilmsCollection.reloadData()
+        }
     }
 
 }
 
 extension FavoriteFilmsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Model.shared.favoriteArray.count
+        return Model.shared.favouriteFilmObjects?.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = favoriteFilmsCollection.dequeueReusableCell(withReuseIdentifier: "FilmCell", for: indexPath) as? FilmCollectionViewCell else {
+        guard let cell = favoriteFilmsCollection.dequeueReusableCell(withReuseIdentifier: "FilmCell", for: indexPath) as? FilmCollectionViewCell,
+              let likedItem = Model.shared.favouriteFilmObjects?[indexPath.item] else {
             return UICollectionViewCell()
         }
 
         cell.layer.cornerRadius = 20
 
-        cell.data = Model.shared.favoriteArray[indexPath.item]
+        cell.data = likedItem
 
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let destViewController = storyboard?.instantiateViewController(withIdentifier: "DetailFilmViewControllerS") as? DetailFilmViewController else { return }
+
+        destViewController.destinationIndex = Model.shared.favouriteFilmObjects?[indexPath.item].id ?? 0
+
+        navigationController?.pushViewController(destViewController, animated: true)
     }
 }

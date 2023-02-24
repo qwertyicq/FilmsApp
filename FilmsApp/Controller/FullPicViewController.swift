@@ -9,20 +9,32 @@ import UIKit
 
 class FullPicViewController: UIViewController {
 
+    @IBOutlet weak var counterLabel: UILabel!
+    @IBOutlet weak var bigPicGalleryCollection: UICollectionView!
+    var picturesCounter: Int = 9
     override func viewDidLoad() {
         super.viewDidLoad()
+        let xibCell = UINib(nibName: "GalleryCell", bundle: nil)
+        bigPicGalleryCollection.register(xibCell, forCellWithReuseIdentifier: "GalleryCell")
 
-        // Do any additional setup after loading the view.
+        bigPicGalleryCollection.dataSource = self
+        bigPicGalleryCollection.delegate = self
+    }
+}
+
+extension FullPicViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return picturesCounter
     }
 
-    /*
-    // MARK: - Navigation
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = bigPicGalleryCollection.dequeueReusableCell(withReuseIdentifier: "GalleryCell", for: indexPath) as? GalleryCell else {
+            return UICollectionViewCell()
+        }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        cell.layer.cornerRadius = 20
+        cell.additionaPosterImage.image = UIImage(named: "image1")
+
+        return cell
     }
-    */
-
 }
