@@ -27,6 +27,8 @@
 		8848351D2882D9E5000270B7 /* FavoriteFilmsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848351C2882D9E5000270B7 /* FavoriteFilmsViewController.swift */; };
 		8848351F2885A3AE000270B7 /* JSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848351E2885A3AE000270B7 /* JSONModel.swift */; };
 		884835212885AA69000270B7 /* FilmCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884835202885AA69000270B7 /* FilmCollectionViewCell.swift */; };
+		887DFE3829AAA02C00FF79B6 /* URLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887DFE3729AAA02C00FF79B6 /* URLService.swift */; };
+		887DFE3A29B7C46F00FF79B6 /* JSONParsingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887DFE3929B7C46F00FF79B6 /* JSONParsingService.swift */; };
 		88882F9228ACC6E800A02A23 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88882F9128ACC6E800A02A23 /* Model.swift */; };
 		88DC65522891C83D00E83727 /* FilmCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88DC65512891C83D00E83727 /* FilmCollectionViewCell.xib */; };
 		88DC655628A3831E00E83727 /* PosterFullViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DC655528A3831E00E83727 /* PosterFullViewController.swift */; };
@@ -78,6 +80,8 @@
 		8848351C2882D9E5000270B7 /* FavoriteFilmsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFilmsViewController.swift; sourceTree = "<group>"; };
 		8848351E2885A3AE000270B7 /* JSONModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONModel.swift; sourceTree = "<group>"; };
 		884835202885AA69000270B7 /* FilmCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCollectionViewCell.swift; sourceTree = "<group>"; };
+		887DFE3729AAA02C00FF79B6 /* URLService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLService.swift; sourceTree = "<group>"; };
+		887DFE3929B7C46F00FF79B6 /* JSONParsingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParsingService.swift; sourceTree = "<group>"; };
 		88882F9128ACC6E800A02A23 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		88DC65512891C83D00E83727 /* FilmCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmCollectionViewCell.xib; sourceTree = "<group>"; };
 		88DC655528A3831E00E83727 /* PosterFullViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterFullViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 		884834E52882C688000270B7 /* FilmsApp */ = {
 			isa = PBXGroup;
 			children = (
+				887DFE3629AA9FEA00FF79B6 /* Service */,
 				88882F8F28ACC3DD00A02A23 /* Model */,
 				88882F8E28ACC3D400A02A23 /* View */,
 				88882F8D28ACC3BA00A02A23 /* Controller */,
@@ -166,6 +171,15 @@
 				884835092882C689000270B7 /* FilmsAppUITestsLaunchTests.swift */,
 			);
 			path = FilmsAppUITests;
+			sourceTree = "<group>";
+		};
+		887DFE3629AA9FEA00FF79B6 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				887DFE3729AAA02C00FF79B6 /* URLService.swift */,
+				887DFE3929B7C46F00FF79B6 /* JSONParsingService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		88882F8D28ACC3BA00A02A23 /* Controller */ = {
@@ -481,6 +495,7 @@
 			files = (
 				88DC655828A3F99C00E83727 /* RoundingTransition.swift in Sources */,
 				8848351D2882D9E5000270B7 /* FavoriteFilmsViewController.swift in Sources */,
+				887DFE3A29B7C46F00FF79B6 /* JSONParsingService.swift in Sources */,
 				8848351B2882D9D6000270B7 /* FullPicViewController.swift in Sources */,
 				88882F9228ACC6E800A02A23 /* Model.swift in Sources */,
 				884834EB2882C688000270B7 /* MainViewController.swift in Sources */,
@@ -492,6 +507,7 @@
 				88DC655628A3831E00E83727 /* PosterFullViewController.swift in Sources */,
 				884835212885AA69000270B7 /* FilmCollectionViewCell.swift in Sources */,
 				884835192882D9C6000270B7 /* FilmPicsViewController.swift in Sources */,
+				887DFE3829AAA02C00FF79B6 /* URLService.swift in Sources */,
 				884835172882D993000270B7 /* DetailFilmViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

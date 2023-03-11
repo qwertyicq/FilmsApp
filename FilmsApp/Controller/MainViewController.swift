@@ -16,10 +16,14 @@ class MainViewController: UIViewController {
 
     var searchController = UISearchController()
 
+    let dataService: URLService = URLService()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //print(Model.shared.realm?.configuration.fileURL)
+        self.dataService.dataRequest()
+
+        print(Model.shared.realm?.configuration.fileURL)
 
         searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "Find Your Film"
@@ -62,7 +66,8 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Model.shared.arrayHelper?.count ?? 0
+        //return Model.shared.arrayHelper?.count ?? 0
+        return Model.shared.filmObjects?.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -84,7 +89,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let destViewController = storyboard?.instantiateViewController(withIdentifier: "DetailFilmViewControllerS") as? DetailFilmViewController else { return }
 
-        destViewController.destinationIndex = Model.shared.arrayHelper?[indexPath.row].id ?? 0
+        //destViewController.destinationIndex = Model.shared.arrayHelper?[indexPath.row].id ?? 0
+        destViewController.destinationIndex = indexPath.row
 
         navigationController?.pushViewController(destViewController, animated: true)
     }
