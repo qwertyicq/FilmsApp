@@ -18,12 +18,22 @@ class FilmCollectionViewCell: UICollectionViewCell {
 
     var id: Int?
 
+    //let urlService = URLService()
+
+    let address = "https://image.tmdb.org/t/p/w500"
+
     var data: FilmObject? {
 
         didSet {
-            guard let unwrData = data else { return }
+            guard let unwrData = data,
+                  let url = URL(string: address + unwrData.filmPic)  else { return }
 
-            posterPreviewImageView.image = UIImage(named: unwrData.filmPic)
+            //urlService.getSetPoster(withURL: url, imageView: posterPreviewImageView)
+            Model.shared.urlService.getSetPoster(url: url) { image in
+                self.posterPreviewImageView.image = image
+            }
+
+            //posterPreviewImageView.image = UIImage(named: unwrData.filmPic)
             filmTitleLabel.text = unwrData.filmTitle
             releaseYearLabel.text = String(unwrData.filmYear)
             rateLabel.text = String(unwrData.filmRating)

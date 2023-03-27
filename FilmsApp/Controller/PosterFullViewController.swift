@@ -17,7 +17,15 @@ class PosterFullViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        fullPosterImageView.image = UIImage(named: testArray[detailIndexPath].testPic ?? "image1")
+        guard let unwrFilmPic = Model.shared.filmObjects?[self.detailIndexPath].filmPic,
+              let posterURL = URL(string: Model.shared.address + unwrFilmPic) else { return }
+
+        //Model.shared.urlService.getSetPoster(withURL: posterURL, imageView: fullPosterImageView)
+        Model.shared.urlService.getSetPoster(url: posterURL) { image in
+            self.fullPosterImageView.image = image
+        }
+
+        //fullPosterImageView.image = UIImage(named: testArray[detailIndexPath].testPic ?? "image1")
     }
     @IBAction func closeButtonTouchUpInside(_ sender: Any) {
         dismiss(animated: true, completion: nil)

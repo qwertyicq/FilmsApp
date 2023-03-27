@@ -35,6 +35,8 @@ class Model {
     public static let shared = Model()
 
     let realm = try? Realm()
+    let urlService = URLService()
+    let address = "https://image.tmdb.org/t/p/w500"
 
     var filmObjects: Results<FilmObject>? {
         return realm?.objects(FilmObject.self)

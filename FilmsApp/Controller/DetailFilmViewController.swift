@@ -20,6 +20,7 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
     var destinationIndex: Int = Int()
     var transition: RoundingTransition = RoundingTransition()
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,10 +31,17 @@ class DetailFilmViewController: UIViewController, UIViewControllerTransitioningD
         galleryCollection.delegate = self
 
         DispatchQueue.main.async {
-            self.posterImageView.image = UIImage(named: Model.shared.filmObjects?[self.destinationIndex].filmPic ?? "image1")
+            guard let unwrFilmPic = Model.shared.filmObjects?[self.destinationIndex].filmPic,
+                  let posterURL = URL(string: Model.shared.address + unwrFilmPic) else { return }
+            //Model.shared.urlService.getSetPoster(withURL: posterURL, imageView: self.posterImageView)
+            Model.shared.urlService.getSetPoster(url: posterURL) { image in
+                self.posterImageView.image = image
+            }
+            //self.posterImageView.image = UIImage(named: Model.shared.filmObjects?[self.destinationIndex].filmPic ?? "image1")
             self.filmTitleLabel.text = Model.shared.filmObjects?[self.destinationIndex].filmTitle
             self.releaseYearLabel.text = String(Model.shared.filmObjects?[self.destinationIndex].filmYear ?? 0)
             self.rateLabel.text = String(Model.shared.filmObjects?[self.destinationIndex].filmRating ?? 0)
+            self.descriptionTextView.text = Model.shared.filmObjects?[self.destinationIndex].overview
             self.likeButton.setTitle("", for: .normal)
             self.likeButton.setImage(Model.shared.filmObjects?[self.destinationIndex].isLiked ?? false ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart"), for: .normal)
         }

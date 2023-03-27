@@ -21,7 +21,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.dataService.dataRequest()
+        Model.shared.urlService.dataRequest()
+        //self.dataService.dataRequest()
 
         print(Model.shared.realm?.configuration.fileURL)
 
@@ -40,8 +41,10 @@ class MainViewController: UIViewController {
         Model.shared.ratingSort()
 
         DispatchQueue.main.async {
-            self.mainCollectionView.reloadData()
+            //self.dataService.dataRequest()
+            Model.shared.urlService.dataRequest()
         }
+        self.mainCollectionView.reloadData()
     }
 
     @IBAction func sortBtnTouchUpInside(_ sender: Any) {
@@ -72,7 +75,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: "FilmCell", for: indexPath) as? FilmCollectionViewCell,
-              let item = Model.shared.arrayHelper?[indexPath.row] else {
+              let item = Model.shared.filmObjects?[indexPath.row] else {
             return UICollectionViewCell()
         }
 
